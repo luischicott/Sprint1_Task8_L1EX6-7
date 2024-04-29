@@ -40,28 +40,35 @@ public class S1_T8_N1EX6and7_Luis_Chicott {
         
         List <String> words = new ArrayList (); 
         
-        for (Object obj : list) {
-            if (obj instanceof String) {
-                words.add((String) obj);
-            }
-        }
+
         
         // Ejercicio 6
         
-        
-        Collections.sort(words, Comparator.comparing(String::length));
 
-        System.out.println("Lista ordenada de cadenas desde la más corta a la más larga: ");
-        System.out.println(words);
+       System.out.println("Lista ordenada de cadenas desde la más corta a la más larga: ");
+      
+       list.stream()
+       .filter(obj -> obj instanceof String)
+       .map(String.class::cast)
+       .sorted(Comparator.comparingInt(String::length))
+       .forEach(System.out::println);
+
+      
         
        // Ejercicio 7 
         
         System.out.println("");
         
-        Collections.sort(words, Comparator.comparing(String::length).reversed());
-        
         System.out.println("Lista ordenada de cadenas desde la más larga a la más corta: ");
-        System.out.println(words);
+        
+        list.stream()
+        .filter(obj -> obj instanceof String)
+        .map(String.class::cast)
+        .sorted(Comparator.comparingInt(String::length).reversed())
+        .forEach(System.out::println);
+        
+     
+
       
 
 	}
